@@ -1,6 +1,6 @@
-# 2nd Brain
+# 2nd Brain Codex
 
-Personal knowledge and life-tracking system. Canonical data in `.md` and `.csv` — managed via Claude Code.
+Personal knowledge and life-tracking system. Canonical data lives in `.md` and `.csv` files and is managed with Codex.
 
 ## Categories
 - **home/** — repairs, maintenance, remodel, appliances
@@ -11,4 +11,4 @@ Personal knowledge and life-tracking system. Canonical data in `.md` and `.csv` 
 - **templates/** — reusable file starters
 - **exports/** — generated reports and artifacts
 
-See `CLAUDE.md` for full usage instructions.
+See `AGENTS.md` for full Codex app, CLI, and repository usage instructions.

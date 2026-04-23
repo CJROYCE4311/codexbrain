@@ -1,17 +1,17 @@
-# 2nd Brain - Claude Code System Guide
+# 2nd Brain - Codex System Guide
 
 ## Purpose
-This is a personal knowledge and tracking system managed via Claude Code in the terminal. All canonical data lives in `.md` and `.csv` files. Claude can generate artifacts (Word docs, Excel sheets, HTML reports) from that data on demand.
+This is a personal knowledge and tracking system managed via the Codex app or Codex CLI. All canonical data lives in `.md` and `.csv` files. Codex can generate artifacts (Word docs, Excel sheets, HTML reports) from that data on demand.
 
 ## Repository
-- Remote: https://github.com/CJROYCE4311/brain.git
+- Remote: git@github.com:CJROYCE4311/codexbrain.git
 - Sync: push after every session or when explicitly requested
 
 ## Directory Structure
 
 ```
-2nd_Brain_Claude/
-├── CLAUDE.md               # System instructions (this file)
+2nd_Brain_Codex/
+├── AGENTS.md               # System instructions (this file)
 ├── README.md               # Human-readable overview
 ├── home/                   # Home repair, maintenance, remodel
 ├── auto/                   # Vehicles, maintenance logs, insurance
@@ -79,10 +79,38 @@ Always include a header row. Dates in ISO format: `YYYY-MM-DD`.
 ### hobbies/
 One subfolder per hobby (e.g., `hobbies/woodworking/`). No fixed schema — user defines structure as needed.
 
-## Working with Claude Code
+## Working with Codex
+
+Codex reads `AGENTS.md` files before doing work, so this repository guide is the canonical set of project instructions. Start Codex from the repository root whenever possible so it loads these rules.
+
+### Installing the Codex App
+Use the Codex app for the easiest day-to-day experience with this system. Official setup docs live at `https://developers.openai.com/codex/app`.
+
+1. Confirm you have a ChatGPT plan with Codex access and sign in with that same account.
+2. Download the Codex app for macOS or Windows. If this is an Intel Mac, choose the Intel macOS build.
+3. Open the installer, move Codex into Applications if prompted, then launch Codex.
+4. Sign in with your ChatGPT account. If you use an API key instead, some cloud-thread features may not be available.
+5. Select this project folder: `/Users/chrisroyce/2nd_Brain_Codex`.
+6. Keep `Local` selected when you want Codex to edit the files on this Mac.
+7. Send a first prompt such as: "Summarize this 2nd Brain system and list the active instructions."
+
+### Optional Terminal Setup
+If you prefer Terminal or need a backup, install the Codex CLI from the official docs at `https://developers.openai.com/codex/cli`.
+
+```bash
+npm i -g @openai/codex
+cd /Users/chrisroyce/2nd_Brain_Codex
+codex
+```
+
+To upgrade the CLI later:
+
+```bash
+npm i -g @openai/codex@latest
+```
 
 ### Adding Content
-Tell Claude what to add and to which category. Claude will:
+Tell Codex what to add and to which category. Codex will:
 1. Identify the correct file (or create it from a template)
 2. Append or update the entry
 3. Keep formatting consistent with existing content
@@ -94,14 +122,14 @@ Example prompts:
 - "Add Dr. Smith, cardiologist, St. Mary's Hospital, 555-1234"
 
 ### Generating Artifacts
-Claude can generate exports from the canonical `.md`/`.csv` files.
+Codex can generate exports from the canonical `.md`/`.csv` files.
 
 Example prompts:
 - "Generate an HTML report of all home repairs this year"
 - "Create an Excel-formatted CSV of my 2025 expenses by category"
 - "Make a maintenance schedule summary as a formatted markdown table"
 
-Exports go in `exports/` with a datestamped filename: `exports/home_repairs_2025-04-22.html`
+Exports go in `exports/` with a datestamped filename: `exports/home_repairs_YYYY-MM-DD.html`
 
 ### Querying Data
 - "What home repairs have I done in 2025?"
@@ -110,7 +138,7 @@ Exports go in `exports/` with a datestamped filename: `exports/home_repairs_2025
 - "List all medications currently active"
 
 ### Adding a New Category
-Tell Claude: "Add a new category called [name]". Claude will:
+Tell Codex: "Add a new category called [name]". Codex will:
 1. Create the folder
 2. Add a `README.md` inside describing the category
 3. Update the directory tree in this file
@@ -124,12 +152,12 @@ git commit -m "YYYY-MM-DD: brief description of changes"
 git push origin main
 ```
 
-Or tell Claude: "sync changes" and Claude will stage, commit with today's date, and push.
+Or tell Codex: "sync changes" and Codex will stage, commit with today's date, and push.
 
 ### First-time setup (if repo not yet initialized)
 ```bash
 git init
-git remote add origin https://github.com/CJROYCE4311/brain.git
+git remote add origin git@github.com:CJROYCE4311/codexbrain.git
 git branch -M main
 git add -A
 git commit -m "Initial 2nd Brain setup"
@@ -151,7 +179,7 @@ git push -u origin main
 Starter templates live in `templates/`. When creating a new file in a category, copy the relevant template and customize.
 
 ## Maintenance of This File
-Update CLAUDE.md when:
+Update AGENTS.md when:
 - A new category is added
 - A file naming convention changes
 - A new procedure is established
