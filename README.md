@@ -2,6 +2,8 @@
 
 Personal knowledge and life-tracking system. Canonical data lives in `.md` and `.csv` files and is managed with Codex.
 
+GitHub is used as a starter-template source only. End users can clone the folder structure and `AGENTS.md` with HTTPS, then keep their personal 2nd Brain data local on their Mac.
+
 ## Categories
 - **home/** — repairs, maintenance, remodel, appliances
 - **auto/** — vehicles, maintenance logs, insurance

@@ -4,8 +4,9 @@
 This is a personal knowledge and tracking system managed via the Codex app or Codex CLI. All canonical data lives in `.md` and `.csv` files. Codex can generate artifacts (Word docs, Excel sheets, HTML reports) from that data on demand.
 
 ## Repository
-- Remote: git@github.com:CJROYCE4311/codexbrain.git
-- Sync: push after every session or when explicitly requested
+- Setup source: https://github.com/CJROYCE4311/codexbrain.git
+- End-user GitHub use: clone/pull this starter repository only; no GitHub account is required if the repository is public
+- End-user data storage: local files on the user's Mac; do not commit, push, or treat GitHub as the backup destination unless the maintainer explicitly requests it
 
 ## Directory Structure
 
@@ -83,6 +84,15 @@ One subfolder per hobby (e.g., `hobbies/woodworking/`). No fixed schema — user
 
 Codex reads `AGENTS.md` files before doing work, so this repository guide is the canonical set of project instructions. Start Codex from the repository root whenever possible so it loads these rules.
 
+### End-User GitHub Model
+The end user uses GitHub only to download the starter folder structure and this `AGENTS.md` file. After setup, their 2nd Brain lives locally on their Mac.
+
+- Do not ask the end user to create a GitHub account.
+- Do not ask the end user to configure SSH keys.
+- Do not push the end user's personal 2nd Brain data to GitHub.
+- Use HTTPS clone commands for setup.
+- If the starter repository is private, the maintainer should either make it public or provide a ZIP export instead.
+
 ### Installing the Codex App
 Use the Codex app for the easiest day-to-day experience with this system. Official setup docs live at `https://developers.openai.com/codex/app`.
 
@@ -95,7 +105,7 @@ Use the Codex app for the easiest day-to-day experience with this system. Offici
 7. Send a first prompt such as: "Summarize this 2nd Brain system and list the active instructions."
 
 ### Optional Terminal Setup
-If you prefer Terminal or need a backup, install the Codex CLI from the official docs at `https://developers.openai.com/codex/cli`.
+If you prefer Terminal or need an alternate local interface, install the Codex CLI from the official docs at `https://developers.openai.com/codex/cli`.
 
 ```bash
 npm i -g @openai/codex
@@ -143,26 +153,28 @@ Tell Codex: "Add a new category called [name]". Codex will:
 2. Add a `README.md` inside describing the category
 3. Update the directory tree in this file
 
-## Git Sync Procedures
+## GitHub Setup Procedures
 
-### After each session
+### End-user first-time setup
 ```bash
-git add -A
-git commit -m "YYYY-MM-DD: brief description of changes"
-git push origin main
+cd ~
+git clone https://github.com/CJROYCE4311/codexbrain.git 2nd_Brain_Codex
 ```
 
-Or tell Codex: "sync changes" and Codex will stage, commit with today's date, and push.
+After cloning, the end user works in the local folder. Their personal data stays on their Mac.
 
-### First-time setup (if repo not yet initialized)
+### Updating the starter files later
+If the maintainer updates only the starter instructions/templates and the end user wants those updates, Codex may pull them down carefully:
+
 ```bash
-git init
-git remote add origin git@github.com:CJROYCE4311/codexbrain.git
-git branch -M main
-git add -A
-git commit -m "Initial 2nd Brain setup"
-git push -u origin main
+cd ~/2nd_Brain_Codex
+git pull
 ```
+
+Only do this when the user requests it, and check for conflicts before overwriting any local personal data.
+
+### Maintainer publishing
+The maintainer may commit and push changes to this starter repository. This is not an end-user backup workflow.
 
 ## Sensitive Data Policy
 - Do NOT store full account numbers, SSNs, passwords, or credentials in any file.

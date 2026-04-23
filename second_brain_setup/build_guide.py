@@ -117,6 +117,7 @@ add_body(doc, 'By the end of this guide you will have everything needed to use y
 add_body(doc, 'You will install or set up:')
 add_bullet(doc, 'A ChatGPT account with Codex access', bold_prefix='ChatGPT account — ')
 add_bullet(doc, 'The Codex app — the main interface for managing your 2nd Brain', bold_prefix='Codex app — ')
+add_bullet(doc, 'The starter folder from GitHub — downloaded one time with no GitHub account required', bold_prefix='Starter folder — ')
 add_bullet(doc, 'Homebrew — a tool that makes installing Mac software easy', bold_prefix='Homebrew — ')
 add_bullet(doc, 'Codex CLI — optional Terminal access when you prefer command-line work', bold_prefix='Codex CLI — ')
 add_bullet(doc, 'Visual Studio Code — for browsing your files in a readable format', bold_prefix='Visual Studio Code — ')
@@ -131,6 +132,7 @@ add_bullet(doc, 'Your MacBook (Intel processor is fine)')
 add_bullet(doc, 'A working internet connection')
 add_bullet(doc, 'An email address for your ChatGPT account')
 add_bullet(doc, 'A ChatGPT plan that includes Codex access')
+add_bullet(doc, 'No GitHub account is needed for the end user')
 add_bullet(doc, 'About 30–45 minutes of uninterrupted time')
 
 # ── STEP 1 ────────────────────────────────────────────────────────────────────
@@ -186,7 +188,7 @@ add_code(doc, 'node --version')
 add_body(doc, 'You should see something like:  v20.x.x or higher.')
 
 # ── STEP 5 ────────────────────────────────────────────────────────────────────
-add_step_box(doc, 5, 'Install Codex CLI (Optional Backup)')
+add_step_box(doc, 5, 'Install Codex CLI (Optional Terminal Interface)')
 
 add_body(doc, 'Codex CLI is the Terminal version of Codex. Install it by typing:')
 add_code(doc, 'npm i -g @openai/codex')
@@ -221,7 +223,7 @@ add_bullet(doc, 'Press Command (⌘) + Shift + V to see it formatted nicely')
 # ── STEP 7 ────────────────────────────────────────────────────────────────────
 add_step_box(doc, 7, 'Install the Codex App')
 
-add_body(doc, 'The Codex app is the recommended way to manage this 2nd Brain system. It lets you keep threads, review changes, use worktrees, and sync with GitHub from one desktop app.')
+add_body(doc, 'The Codex app is the recommended way to manage this 2nd Brain system. It lets you keep threads, review changes, and work with the local files on your Mac from one desktop app.')
 add_body(doc, 'Open the official Codex app docs:')
 add_code(doc, 'https://developers.openai.com/codex/app')
 add_body(doc, 'Download the app for macOS. If your Mac is Intel-based, choose the Intel macOS build. Open the download and move Codex into Applications if prompted.')
@@ -232,11 +234,12 @@ add_note(doc, 'If macOS blocks the first launch, open System Settings > Privacy 
 add_step_box(doc, 8, 'Open Your 2nd Brain Folder in Codex')
 
 add_body(doc, 'Your 2nd Brain files are stored in a folder on your Mac. Codex should be opened on that folder so it can read AGENTS.md and follow the project rules.')
+add_note(doc, 'GitHub is used only to download the starter folder structure and AGENTS.md. Your personal 2nd Brain data stays local on your Mac and is not backed up to GitHub.')
 
 add_heading(doc, 'Get the folder from GitHub:', 2)
-add_body(doc, 'In Terminal, type:')
+add_body(doc, 'In Terminal, type the HTTPS clone command below. This does not require a GitHub account if the starter repository is public:')
 add_code(doc, 'cd ~')
-add_code(doc, 'git clone git@github.com:CJROYCE4311/codexbrain.git 2nd_Brain_Codex')
+add_code(doc, 'git clone https://github.com/CJROYCE4311/codexbrain.git 2nd_Brain_Codex')
 add_body(doc, 'This downloads the folder to your Mac. You only do this once.')
 
 add_heading(doc, 'Open the folder in the Codex app:', 2)
@@ -271,9 +274,9 @@ add_bullet(doc, '"Create an HTML report of all 2025 expenses"')
 add_bullet(doc, '"Summarize my home maintenance history"')
 
 add_heading(doc, 'Ending your session:', 2)
-add_body(doc, 'When you are done, tell Codex to save your changes:')
-add_bullet(doc, 'Type:  sync changes')
-add_bullet(doc, 'Codex will stage, commit, and upload your changes to GitHub')
+add_body(doc, 'When you are done, ask Codex to summarize what changed:')
+add_bullet(doc, 'Type:  summarize today\'s changes')
+add_bullet(doc, 'Codex edits the local files on your Mac; it should not upload your personal 2nd Brain data to GitHub')
 add_bullet(doc, 'Then close the Codex thread or type /exit if you are using the CLI')
 
 # ── Quick Reference ───────────────────────────────────────────────────────────
@@ -297,7 +300,7 @@ rows = [
     ('Exit Codex CLI',              '/exit or Ctrl + C'),
     ('Open Codex app',              'Applications → Codex → Open project'),
     ('Open a file to read',         'Open VS Code → File > Open → press ⌘+Shift+V'),
-    ('Sync/save your changes',      'Tell Codex: "sync changes"'),
+    ('Review local changes',        'Tell Codex: "summarize today\'s changes"'),
     ('Manage your subscription',    'chatgpt.com → Settings'),
 ]
 for task, action in rows:
@@ -326,13 +329,14 @@ add_body(doc, 'Copy the URL shown by Codex in Terminal and paste it into Safari 
 add_heading(doc, 'Codex app will not open', 2)
 add_body(doc, 'Go to System Settings → Privacy & Security, and click "Open Anyway" if macOS blocked it. If the app is too slow or crashes, use Codex CLI in Terminal instead.')
 
-add_heading(doc, 'Git clone fails with SSH permission errors', 2)
-add_body(doc, 'Your GitHub SSH key may not be set up on this Mac yet. Ask Codex to help set up GitHub SSH access, or clone with HTTPS if you only need to read the files.')
+add_heading(doc, 'Git clone asks for a GitHub username or password', 2)
+add_body(doc, 'Make sure you used the HTTPS clone command from this guide. If it still asks for a login, the starter repository may be private. The maintainer should make it public or provide a ZIP copy.')
 
-add_heading(doc, 'You forgot to sync before closing', 2)
-add_body(doc, 'Open Terminal, go to the folder, and run:')
+add_heading(doc, 'You want the newest starter instructions later', 2)
+add_body(doc, 'Only do this if you specifically want updates from the starter repository. Open Terminal, go to the folder, and run:')
 add_code(doc, 'cd ~/2nd_Brain_Codex')
-add_code(doc, 'git add -A && git commit -m "manual sync" && git push')
+add_code(doc, 'git pull')
+add_note(doc, 'If Git reports conflicts, stop and ask Codex to help. Do not overwrite personal 2nd Brain files.')
 
 # ── Save ──────────────────────────────────────────────────────────────────────
 output = '/Users/chrisroyce/2nd_Brain_Codex/second_brain_setup/2nd_Brain_Setup_Guide.docx'
